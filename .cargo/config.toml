@@ -1,0 +1,6 @@
+# Workaround for Windows schannel CRYPT_E_NO_REVOCATION_CHECK (0x80092012):
+# some corporate / offline networks cannot reach the CRL/OCSP endpoints, which
+# makes cargo's TLS handshake to crates.io fail. Disabling the revocation check
+# only affects certificate *revocation* lookups, not chain validation.
+[http]
+check-revoke = false

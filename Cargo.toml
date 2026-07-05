@@ -1,0 +1,60 @@
+[package]
+name = "qil"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.95"
+description = "Quaternionic Invariant Laboratory (QIL): an exact-arithmetic research framework for non-commutative quaternionic invariants of 3-SAT and the structural collapse mechanisms of Geometric Complexity Theory."
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["quaternion", "complexity", "geometric-complexity-theory", "exact-arithmetic", "3-sat"]
+categories = ["mathematics", "science"]
+
+[lib]
+name = "qil"
+path = "src/lib.rs"
+
+[dependencies]
+num-rational = { version = "0.4", features = ["num-bigint-std"] }
+num-bigint = "0.4"
+num-traits = "0.2"
+
+[dev-dependencies]
+criterion = "0.5"
+
+# ---------------------------------------------------------------------------
+# Reproducibility experiments. These are runnable research drivers living under
+# `experiments/`; they are declared as example targets with explicit paths so a
+# researcher can invoke them with `cargo run --example <name>`.
+# ---------------------------------------------------------------------------
+[[example]]
+name = "random_instances"
+path = "experiments/random_instances.rs"
+
+[[example]]
+name = "benchmark"
+path = "experiments/benchmark.rs"
+
+[[example]]
+name = "exact_validation"
+path = "experiments/exact_validation.rs"
+
+[[example]]
+name = "stress_tests"
+path = "experiments/stress_tests.rs"
+
+# ---------------------------------------------------------------------------
+# Criterion benches (stable harness). These measure performance only and never
+# influence the exact-arithmetic results reported in the manuscript.
+# ---------------------------------------------------------------------------
+[[bench]]
+name = "quaternion_ops"
+harness = false
+
+[[bench]]
+name = "invariants"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1

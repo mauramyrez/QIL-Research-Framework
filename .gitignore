@@ -1,0 +1,33 @@
+# Rust / Cargo
+/target/
+Cargo.lock
+**/*.rs.bk
+
+# LaTeX build artifacts
+docs/submission_algorithmica_springer/*.aux
+docs/submission_algorithmica_springer/*.log
+docs/submission_algorithmica_springer/*.out
+docs/submission_algorithmica_springer/*.toc
+docs/submission_algorithmica_springer/*.fls
+docs/submission_algorithmica_springer/*.fdb_latexmk
+docs/submission_algorithmica_springer/*.synctex.gz
+docs/submission_algorithmica_springer/*.blg
+docs/submission_algorithmica_springer/*.bbl
+docs/submission_algorithmica_springer/*.pdf
+docs/submission_algorithmica_springer/*.lof
+docs/submission_algorithmica_springer/*.lot
+docs/submission_algorithmica_springer/*.nav
+docs/submission_algorithmica_springer/*.snm
+docs/submission_algorithmica_springer/*.vrb
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Criterion benchmark output
+/target/criterion/
