@@ -125,6 +125,15 @@ terminally-abelianized readout) before it is trusted.
 If you use QIL in academic work, please cite it via [CITATION.cff](CITATION.cff)
 and the accompanying manuscript.
 
+## Transparency and Methodology
+
+This research framework was developed by Mauricio M. Paniagua as the sole
+author. Cursor IDE was used as an assisted development environment, and the
+Quaternionic Invariant Laboratory (QIL) library was designed and implemented
+by the author for exact rational arithmetic verification of all experimental
+results. The research methodology and structural proofs are the result of the
+author's independent work.
+
 ## License
 
 Dual-licensed under either of [MIT](LICENSE-MIT) or
