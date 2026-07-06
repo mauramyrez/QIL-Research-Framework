@@ -53,4 +53,5 @@ motivating the tensor model.
 ## Paper reference
 
 Sections "Global Torsion and the Commutative Collapse Theorem" and "The
-Inevitability of Trilinear Objects".
+Inevitability of Trilinear Objects" of
+`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.

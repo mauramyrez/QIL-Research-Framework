@@ -3,9 +3,10 @@
 //! # Mathematical meaning
 //!
 //! This module studies the abstract algebraic structure of the Dieudonne
-//! determinant as a candidate GCT obstruction: the prime factorisation of its
-//! reduced norm, its projection onto the commutative quotient `Q[k]`, and how
-//! the prime support behaves across a structurally controlled sweep.
+//! determinant as a candidate non-commutative obstruction invariant: the prime
+//! factorisation of its reduced norm, its projection onto the commutative
+//! quotient `Q[k]`, and how the prime support behaves across a structurally
+//! controlled sweep.
 //!
 //! For the canonical minimal pair the UNSAT reduced norm collapses to a pure
 //! power of two (`Nrd = 2^16`) while the SAT one carries an odd prime

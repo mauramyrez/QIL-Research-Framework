@@ -1,7 +1,7 @@
-//! `collapse` — the two structural collapse mechanisms of the QIL program.
+//! `collapse` — the two structural collapse mechanisms (boundary theorems).
 //!
-//! The central thesis of the accompanying manuscript is a structural theory of
-//! why local, low-degree non-commutative invariants of 3-SAT fail. Two
+//! The accompanying manuscript proves exact delimitation theorems for a natural
+//! class of local, low-degree non-commutative invariants over `H(Q)`. Two
 //! mechanisms are identified and implemented exactly here:
 //!
 //! * [`intrinsic`] — the **Intrinsic Bipartite Gauge Collapse**: the

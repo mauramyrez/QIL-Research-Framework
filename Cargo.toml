@@ -3,10 +3,10 @@ name = "qil"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.95"
-description = "Quaternionic Invariant Laboratory (QIL): an exact-arithmetic research framework for non-commutative quaternionic invariants of 3-SAT and the structural collapse mechanisms of Geometric Complexity Theory."
+description = "Quaternionic Invariant Laboratory (QIL): exact-arithmetic verification of local non-commutative quaternionic invariants, intrinsic gauge collapse, and terminal abelianization (Computational Complexity manuscript companion)."
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-keywords = ["quaternion", "complexity", "geometric-complexity-theory", "exact-arithmetic", "3-sat"]
+keywords = ["quaternion", "algebraic-complexity", "non-commutative-algebra", "exact-arithmetic", "3-sat", "impossibility-results"]
 categories = ["mathematics", "science"]
 
 [lib]

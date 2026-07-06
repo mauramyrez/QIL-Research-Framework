@@ -20,7 +20,7 @@ src/
     incidence_matrix.rs AlgebraicAdjacencyMatrix (order-2, bipartite)
     hypergraph_tensor.rs HypergraphTensor3 (order-3, 3-uniform)
     contractions.rs     TensorMatrixProjection, contract_axis
-  invariants/     candidate GCT invariants
+  invariants/     candidate local non-commutative invariants
     dieudonne.rs        Dieudonne determinant + reduced norm
     spectral.rs         matrix word-trace spectrum Tr(A^p)
     quaternionic_trace.rs  ordered word-trace Tr(M^p) of the marginal

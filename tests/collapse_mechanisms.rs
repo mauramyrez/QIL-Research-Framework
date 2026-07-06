@@ -1,4 +1,4 @@
-//! Integration tests for the two collapse mechanisms of the QIL program.
+//! Integration tests for the two collapse mechanisms (boundary theorems).
 //!
 //! These exercise the public API end-to-end (as an external crate would),
 //! checking the Intrinsic Bipartite Gauge Collapse and the Extrinsic Terminal

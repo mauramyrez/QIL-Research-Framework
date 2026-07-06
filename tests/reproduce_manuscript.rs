@@ -1,5 +1,5 @@
-//! Integration tests that reproduce the manuscript's pinned exact values:
-//! the minimal linear control pair and the two size-matched invariant tables.
+//! Integration tests that reproduce the manuscript's pinned exact values and
+//! corroborate Section "Exact Verification on Size-Matched Instances".
 
 use num_bigint::BigInt;
 use num_rational::BigRational;

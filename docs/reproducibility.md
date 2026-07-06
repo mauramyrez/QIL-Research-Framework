@@ -1,7 +1,9 @@
 # Reproducibility Guide
 
-Every quantitative claim in the QIL manuscript is reproducible bit-for-bit with
-exact arithmetic. This guide lists the exact commands.
+Every quantitative claim in the manuscript is reproducible bit-for-bit with
+exact arithmetic. The paper is a boundary result for local quaternionic
+invariants (Springer *Computational Complexity* submission); QIL verifies every
+cited constant. This guide lists the exact commands.
 
 ## Prerequisites
 
@@ -67,7 +69,7 @@ cargo bench            # Criterion (performance only; optional)
 ## Recompile the paper
 
 ```
-cd docs/submission_algorithmica_springer
+cd docs/submission_computational_complexity_springer
 pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
 bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
 pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex

@@ -14,7 +14,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `generators/`, `io/`, `utils/`.
 - Unified the two research phases (linear incidence matrix and non-linear
   hypergraph tensor) into a single manuscript at
-  `docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+  `docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+- Reframed the manuscript and workspace for Springer *Computational Complexity*:
+  boundary-result framing, renamed submission folder, updated title/abstract,
+  section names (`Exact Verification…`, `Implications for Obstruction Search`,
+  QIL as verification apparatus), and aligned README, CITATION.cff, and Rustdocs.
 
 ### Added
 - `collapse/extrinsic.rs`: the `TerminalProjection (Trd, Nrd)` formalising the

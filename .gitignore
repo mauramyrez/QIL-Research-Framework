@@ -4,21 +4,21 @@ Cargo.lock
 **/*.rs.bk
 
 # LaTeX build artifacts
-docs/submission_algorithmica_springer/*.aux
-docs/submission_algorithmica_springer/*.log
-docs/submission_algorithmica_springer/*.out
-docs/submission_algorithmica_springer/*.toc
-docs/submission_algorithmica_springer/*.fls
-docs/submission_algorithmica_springer/*.fdb_latexmk
-docs/submission_algorithmica_springer/*.synctex.gz
-docs/submission_algorithmica_springer/*.blg
-docs/submission_algorithmica_springer/*.bbl
-docs/submission_algorithmica_springer/*.pdf
-docs/submission_algorithmica_springer/*.lof
-docs/submission_algorithmica_springer/*.lot
-docs/submission_algorithmica_springer/*.nav
-docs/submission_algorithmica_springer/*.snm
-docs/submission_algorithmica_springer/*.vrb
+docs/submission_computational_complexity_springer/*.aux
+docs/submission_computational_complexity_springer/*.log
+docs/submission_computational_complexity_springer/*.out
+docs/submission_computational_complexity_springer/*.toc
+docs/submission_computational_complexity_springer/*.fls
+docs/submission_computational_complexity_springer/*.fdb_latexmk
+docs/submission_computational_complexity_springer/*.synctex.gz
+docs/submission_computational_complexity_springer/*.blg
+docs/submission_computational_complexity_springer/*.bbl
+docs/submission_computational_complexity_springer/*.pdf
+docs/submission_computational_complexity_springer/*.lof
+docs/submission_computational_complexity_springer/*.lot
+docs/submission_computational_complexity_springer/*.nav
+docs/submission_computational_complexity_springer/*.snm
+docs/submission_computational_complexity_springer/*.vrb
 
 # Editor / OS
 .vscode/

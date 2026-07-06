@@ -1,5 +1,6 @@
 ﻿%Version 3.1 December 2024
-% Migrated manuscript: Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT
+% Manuscript: Impossibility of Local Quaternionic Invariants for 3-SAT Separation
+% Springer Computational Complexity submission (sn-jnl working format)
 
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
 
@@ -27,7 +28,7 @@
 
 \raggedbottom
 
-% Running head (Springer / Algorithmica submission convention)
+% Running head (Springer submission convention)
 \makeatletter
 \providecommand{\titlerunning}[1]{%
   \gdef\s@title{#1}%
@@ -67,150 +68,157 @@
 
 \begin{document}
 
-\title[Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT]{Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT: The Bipartite Gauge Involution and Terminal Abelianization in Quaternionic Incidence Matrices and Order-3 Tensors}
-\titlerunning{Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT}
+\title[Quaternionic Obstruction Collapse]{Impossibility of Local Quaternionic Invariants for $3$-SAT Separation: Intrinsic Gauge Collapse and Terminal Abelianization}
+\titlerunning{Quaternionic Obstruction Collapse for 3-SAT}
 
 \author*[1]{\fnm{M.~M.} \sur{Paniagua-Ram\'irez}}\email{1912574a@umich.mx}
 
 \affil*[1]{\orgdiv{Facultad de Ingenier\'ia El\'ectrica}, \orgname{Universidad Michoacana de San Nicol\'as de Hidalgo}, \orgaddress{\country{Mexico}}}
 
-\abstract{We study why a natural class of non-commutative algebraic invariants fails
-to separate satisfiable from unsatisfiable $3$-CNF formulas, using two
-successive quaternionic encodings over the exact field $\QQ$. First, we
-encode a formula's clause--variable incidence structure as a matrix over the
-Hamiltonian quaternions $\HH(\QQ)$. We show that the bipartite two-colouring
-of this structure induces a diagonal gauge involution that forces the
-Dieudonn\'e determinant into a commutative subfield, annihilating all
-inter-literal commutator torsion; we prove this collapse is intrinsic to any
-bipartite bilinear encoding of width-$3$ clauses, and that avoiding it
-forces the encoding's arity up to three. Second, we construct a symmetric
-order-$3$ tensor encoding that removes this gauge symmetry and does retain
-genuine non-commutative structure once vertex-degree heterogeneity breaks a
-Fourier-theoretic cancellation on individual hyperedges. However, we show
-that any scalar readout of this tensor factoring through the reduced
-norm---including the Frobenius reduced-norm invariant and cyclic word-trace
-invariants---projects the non-commutative spectrum onto a two-dimensional
-commutative summary (reduced trace and reduced norm), discarding the oriented
-information the construction was designed to preserve. We verify both
-mechanisms on exact, size-matched satisfiable and unsatisfiable instances
-using an open-source arbitrary-precision framework (QIL). The two
-mechanisms---collapse in the object versus collapse in the
-measurement---give a precise account of why this family of invariants cannot
-separate $3$-SAT instances, and delineate constraints that any successor
-invariant in this vein must satisfy.}
+\abstract{We prove exact \emph{boundary theorems} for a natural class of local,
+low-degree non-commutative invariants built over the rational Hamiltonian
+quaternions $\HH(\QQ)$---the non-commutative lift of spectral and
+Dieudonn\'e-type readouts used in matrix-semi-invariant obstruction
+searches. On exactly labelled $3$-CNF instances (our combinatorial testbed,
+not a $\mathrm{P}$ versus $\mathrm{NP}$ claim), two successive encodings
+exhibit mechanistically distinct collapse: (i)~bipartite bilinearity forces an
+intrinsic diagonal gauge, commuting the Dieudonn\'e representative; (ii)~after
+the minimal arity lift to an order-$3$ tensor, any scalar certificate
+factoring through the reduced norm projects word-traces onto the conjugation
+invariant pair $(\Trd,\Nrd)$, erasing oriented non-commutative data at the
+readout. We give a taxonomy---object collapse versus measurement
+collapse---and necessary conditions for any successor invariant. All
+constants are machine-checked in the open-source \emph{Quaternionic Invariant
+Laboratory} (QIL) over exact $\QQ$ arithmetic.}
 
-\keywords{non-commutative invariants, 3-SAT, quaternionic encodings, Dieudonn\'e determinant, geometric complexity theory, exact arithmetic}
+\keywords{algebraic complexity, non-commutative invariants, matrix semi-invariants, Dieudonn\'e determinant, impossibility results, division rings, exact arithmetic}
 
 \maketitle
 %=======================================================================
 \section{Introduction}\label{sec:intro}
 %=======================================================================
 
-\subsection{The \texorpdfstring{$\mathrm{P}$ versus $\mathrm{NP}$}{P vs NP} problem through
-coordinate rings}
+\subsection{Non-commutative invariants in algebraic complexity}
 
-The Geometric Complexity Theory (GCT) program of Mulmuley and
-Sohoni~\cite{GCT1,GCT2,MulmuleyCACM} reframes the $\mathrm{P}$ versus
-$\mathrm{NP}$ separation, and complexity lower bounds more generally, as a
-problem in the algebraic geometry of orbit closures. One attaches to a
-computational object a point in a representation space, forms the closure
-of its orbit under a natural group action, and seeks to separate two such
-varieties---the orbit closure of a ``hard'' object and of an ``easy''
-one---by exhibiting an \emph{explicit obstruction}: an element of the
-coordinate ring, or a representation-theoretic multiplicity, that vanishes
-identically on one variety but not the other. The strategic appeal of this
-reformulation is that a genuine algebraic-geometric obstruction is designed
-to slip past the three classical barriers that have blocked combinatorial
-lower bounds: relativization~\cite{BGS}, the natural-proofs barrier of
-Razborov and Rudich~\cite{RR}, and the algebrization barrier of Aaronson
-and Wigderson~\cite{AW}.
+A recurring strategy in algebraic complexity and representation-theoretic
+obstruction search is to attach to a computational object a polynomial or
+matrix datum over a structured coefficient ring, then seek a \emph{low-degree,
+basis-independent} functional that separates two classes of instances---for
+example, orbit closures in geometric complexity theory
+(GCT)~\cite{GCT1,GCT2,MulmuleyCACM}, matrix semi-invariants of quiver
+representations~\cite{DerksenMakam}, or rational certificates from
+non-commutative data~\cite{GGOV,IvanyosQiaoSubrahmanyam}. When such a
+functional exists, it is a candidate \emph{obstruction}; when a natural
+family provably cannot separate, the failure mode itself delimits what any
+successor must avoid.
 
-The satisfiability problem $3$-SAT~\cite{Cook,GareyJohnson} is the canonical
-$\mathrm{NP}$-complete anchor for such an attack: a $3$-CNF formula is a
-finite, purely combinatorial object with an exact satisfiability label, so
-any functional that decided satisfiability by thresholding a low-complexity
-algebraic invariant would be an event of the first magnitude---and, by the
-natural-proofs framework, an object one should expect not to exist in that
-form. The value of the present work is precisely to make that expectation
-\emph{structural and exact}: to build candidate invariants, run them
-against exactly labelled instances with no numerical error whatsoever, and
-then to prove, not merely observe, why they degenerate.
+This paper is a \emph{boundary result} in that spirit. We study local,
+low-degree invariants over the rational Hamiltonian quaternion division ring
+$\HH(\QQ)$---the natural non-commutative lift of spectral and Dieudonn\'e-type
+readouts on incidence data---and prove exact structural theorems explaining
+why a concrete pipeline cannot yield a separating $\QQ$-valued certificate.
+We do \emph{not} claim a separation of $\mathrm{P}$ from $\mathrm{NP}$, a
+new theorem about algebrization~\cite{AW}, or progress toward explicit GCT
+obstructions; our contribution is a rigorously proved impossibility theorem
+for a specific, \emph{a priori} reasonable family of non-commutative
+candidates, together with a taxonomy of the two distinct mechanisms by which
+such candidates degenerate.
 
-\subsection{Non-commutativity as structural rigidity}
+\paragraph{Subject classification.}
+68Q15 (Complexity lower bounds); 68Q17 (Algebraic complexity theory);
+16W10 (Associative rings and algebras over fields); 15A15 (Matrix theory).
 
-In approaches motivated by GCT, a recurring obstacle is that linear
-algebraic invariants over commutative fields are typically \emph{gauge
-trivial}. Spectral data attached to an adjacency or incidence matrix $A$
-are invariant under a similarity $A\mapsto U^{\dagger}AU$; the orbit of an
-instance under such transformations collapses any spectral functional onto
-a residue that cannot see the semantic distinctions between instances. This
-illustrates, in miniature, a phenomenon structurally analogous to how
-algebrization defeats algebraic-degree arguments~\cite{AW}: an invariant
-computable from a
-low-degree commutative extension inherits too much symmetry to separate
-what it must.
+\subsection{Combinatorial testbed: exactly labelled \texorpdfstring{$3$-SAT}{3-SAT}}
 
-Our program attacks this at the level of the coefficient ring. Rather than
-diagonalising a matrix over a commutative cyclotomic field, we encode $3$-SAT
-into structures over the \emph{rational Hamiltonian quaternion division
-ring} $\HH(\QQ)$, mapping literal polarities onto anticommuting imaginary
-units. Because $\bi\bj=-\bj\bi$, the linear reductions that trivialise
-commutative spectra no longer act freely, and one may hope that a genuinely
-non-commutative invariant---a Dieudonn\'e determinant~\cite{Dieudonne}, or a
-non-abelian matrix word-trace---retains a rigid arithmetic datum that
-distinguishes the satisfiability locus. The purpose of this paper is to
-determine, with complete rigor and exact arithmetic, the fate of that hope.
+We instantiate the general framework on $3$-CNF
+formulas~\cite{Cook,GareyJohnson}: finite combinatorial objects with an exact
+satisfiability label. This testbed lets every invariant be evaluated over
+$\ZZ$ and $\QQ$ with no numerical error and lets negative results be proved,
+not merely observed on heuristics. Any functional that decided satisfiability
+by thresholding a low-complexity invariant would be extraordinary---and, by
+the natural-proofs framework~\cite{RR}, unexpected in the form we study. Our
+aim is to show \emph{structurally and exactly} why the quaternionic pipeline
+we build cannot serve as such a separator.
 
 \subsection{Two collapse mechanisms: a preview}
 
-We report two distinct degeneration phenomena, discovered at two different
-levels of the construction, and we argue that they are complementary poles
-of a single taxonomy.
+We report two distinct degeneration phenomena at two levels of the
+construction---complementary poles of a single taxonomy.
 
 \begin{enumerate}
-\item \textbf{Intrinsic Gauge Collapse} (matrix level,
-Sections~\ref{sec:incidence}--\ref{sec:collapse}). The bipartite
-clause--variable incidence matrix is a \emph{bilinear} object supported on
-a two-colourable graph. That two-colouring \emph{is} a diagonal gauge
-involution $\sigma_{\bk}(\Aphi)=G\Aphi G^{-1}$; it conjugates the
-determinant representative into a commutative subfield and annihilates the
-literal commutator torsion identically. The non-commutativity is destroyed
-\emph{in the object itself}.
+\item \textbf{Intrinsic gauge collapse} (matrix level,
+Sections~\ref{sec:incidence}--\ref{sec:collapse}). A bipartite
+clause--variable incidence matrix is a bilinear object on a two-colourable
+graph. The two-colouring \emph{is} a diagonal gauge involution
+$\sigma_{\bk}(\Aphi)=G\Aphi G^{-1}$; it conjugates the Dieudonn\'e
+representative into a commutative subfield and annihilates literal commutator
+torsion identically. Non-commutativity is destroyed \emph{in the object}.
 
-\item \textbf{Extrinsic Terminal Abelianization} (tensor level,
-Sections~\ref{sec:tensor}--\ref{sec:terminal}). Passing to a symmetric
-order-$3$ tensor removes the bipartite gauge---the object now genuinely
-carries non-commutative structure, including surviving imaginary
-components on unsatisfiable instances. Yet the \emph{scalar extraction}
-used to read out a rational certificate---the reduced norm, or a reduced
-norm of a word-trace---factors through the abelianization of
-$\HH(\QQ)^{\times}$ and projects the non-commutative datum back onto the
-commutative centre $\QQ$. The non-commutativity survives in the object but
-is erased \emph{by the measurement}.
+\item \textbf{Extrinsic terminal abelianization} (tensor level,
+Sections~\ref{sec:tensor}--\ref{sec:terminal}). A symmetric order-$3$ tensor
+removes the bipartite gauge and can retain genuine non-commutative structure.
+Yet any scalar readout factoring through the reduced norm---Frobenius
+reduced-norm sums or cyclic word-trace certificates---projects through the
+abelianization $\HH(\QQ)^{\times}\to\QQ_{>0}$ onto the centre. Non-commutativity
+survives in the object but is erased \emph{by the measurement}.
 \end{enumerate}
 
-Section~\ref{sec:bridge} is the logical hinge between the two: we prove that
-the first collapse is not an accident of one matrix but an intrinsic
-feature of order-$2$ formats, and that removing its cause forces the
-transition to order-$3$ carriers, making the second phase inevitable rather
-than optional.
+Section~\ref{sec:bridge} proves the first collapse intrinsic to all
+two-colourable order-$2$ formats and that escaping it forces arity three,
+making the second phase inevitable.
 
-\subsection{Reproducibility and exact arithmetic}
+Linear invariants over commutative fields are often \emph{gauge trivial}:
+spectral data are invariant under $A\mapsto U^{\dagger}AU$. This illustrates,
+in miniature, a phenomenon we compare---only by structural analogy, without
+claiming a formal reduction---to how algebrization defeats certain
+algebraic-degree arguments~\cite{AW}; we do not prove any statement about
+the algebrization barrier itself. Encoding literal polarities as
+anticommuting units in $\HH(\QQ)$ was an \emph{a priori} reasonable probe
+because it sits in the same Dieudonn\'e and semi-invariant toolbox cited
+above; that this specific pipeline fails with an exact explanation is what
+makes the outcome informative for obstruction search.
 
-All exact computations, tensor constructions, quaternionic arithmetic,
-invariant evaluations and reproducible experiments reported in this work
-were performed using the \emph{Quaternionic Invariant Laboratory} (QIL), an
-open-source exact-arithmetic research framework accompanying this
-manuscript. Every numerical assertion below is the output of exact
-computation over $\ZZ$ and $\QQ$ using arbitrary-precision integers and
-fractions; there is no floating-point quantity at any stage, so all reduced
-norms, traces, tensor entries, and invariants are exact rationals
-reproducible bit-for-bit. The principal constructions are named in situ
-(e.g.\ \texttt{build\_from\_cnf}, \texttt{compute\_dieudonne\_determinant},
-\texttt{build\_tensor\_from\_cnf}, \texttt{contract\_axis},
-\texttt{word\_trace}, \texttt{compute\_normalized\_invariant}). QIL is
-described in Section~\ref{sec:software}, which also documents how every table
-and figure in this paper can be regenerated.
+\subsection{Main results and scope}\label{sec:contributions}
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Intrinsic bipartite gauge collapse.}
+Theorem~\ref{thm:collapse} and Theorem~\ref{thm:intrinsic}: every
+non-singular order-$2$ encoding on a two-colourable support with literal
+polarities in the $(-1)$-eigenspace of $\sigma_{\bk}$ has
+$\Ddet(A)\in\QQ[k]$; commutator torsion vanishes identically.
+\item \textbf{Minimal arity lift.}
+Corollary~\ref{cor:necessity}: faithful width-$3$ clause encoding without
+auxiliary vertices requires a symmetric order-$3$ tensor, removing the
+bipartite gauge (Proposition~\ref{prop:nogauge}).
+\item \textbf{Terminal abelianization.}
+Theorem~\ref{thm:terminal}: for any marginal from linear contraction and
+any $F=g\circ\Nrd$, the certificate $F(\Tr(M^p))$ depends only on
+$(\Trd,\Nrd)$; oriented non-commutative data are erased at the readout
+(Remark~\ref{rem:terminal} locates this step in the pipeline).
+\item \textbf{Taxonomy and escape conditions.}
+Section~\ref{sec:discussion} formulates necessary conditions for successor
+invariants (non-abelian boundary evaluation or non-local contraction).
+\item \textbf{Exact verification.}
+Section~\ref{sec:experiments} corroborates the structural predictions on
+size-matched instances; Section~\ref{sec:software} documents QIL, the
+open-source exact-arithmetic laboratory in which every constant in this
+paper is machine-checked.
+\end{enumerate}
+
+\subsection{Organization}
+
+Sections~\ref{sec:incidence}--\ref{sec:collapse} develop the quaternionic
+incidence matrix and intrinsic collapse; Section~\ref{sec:bridge} proves the
+arity obstruction; Sections~\ref{sec:tensor}--\ref{sec:contract} build
+the order-$3$ tensor, Fourier annihilation, and contraction; Section~\ref{sec:terminal}
+states the terminal abelianization theorem; Section~\ref{sec:experiments}
+reports exact size-matched data; Section~\ref{sec:discussion} draws
+implications for obstruction search; Section~\ref{sec:software} describes QIL.
+
+\medskip
+\noindent\textbf{Exact arithmetic.}
+All computations use arbitrary-precision $\ZZ$ and $\QQ$ via QIL
+(Section~\ref{sec:software}); there is no floating point anywhere.
 
 \newpage
 
@@ -1071,11 +1079,10 @@ Section~\ref{sec:experiments} shows it empirically.
 \section{The Terminal Abelianization Theorem}\label{sec:terminal}
 %=======================================================================
 
-We now elevate the empirical failure into a structural theorem: any scalar
-extraction that factors through the reduced norm collapses the entire
-non-commutative spectrum of the contracted matrix onto a
-conjugation-invariant central pair, and is therefore blind to the oriented
-data the quaternionic encoding preserves.
+We elevate the readout failure to a structural \emph{delimitation theorem}:
+any scalar extraction factoring through the reduced norm collapses the
+non-commutative spectrum of the contracted matrix onto a conjugation-invariant
+central pair, blind to oriented data the intermediate word-trace may carry.
 
 \subsection{Conjugacy invariance of the reduced norm}
 
@@ -1155,6 +1162,22 @@ $b^2+c^2+d^2=\lVert\im(t_p)\rVert^2$, so the oriented content (the relative
 phase among $\bi,\bj,\bk$ that encodes non-commutative order) is erased.
 \end{proof}
 
+\begin{remark}[Where the contribution lies]\label{rem:terminal}
+The conclusion of Theorem~\ref{thm:terminal} is, in isolation, a
+comparatively direct application of Lemma~\ref{lem:levelsets}: any
+functional factoring through the reduced norm is constant on conjugation
+orbits, and non-central conjugation classes in $\HH(\QQ)$ are classified by
+$(\Trd,\Nrd)$. The substantive contribution is not the classification
+itself but its \emph{location} in the algorithmic pipeline
+tensor~$\to$~contraction~$\to$~word-trace~$\to$~$\Nrd$: the object and
+the trace can carry oriented non-commutative data, yet the terminal
+$\Nrd$ readout is exactly the step at which that data is projected to the
+commutative central pair. Identifying this abelianization wall as the
+precise failure point of the construction required building and analysing
+the full chain; it was not manifest from the abstract quaternionic
+formalism alone.
+\end{remark}
+
 \begin{example}[Orientation erasure]\label{ex:erase}
 The three quaternions
 \[
@@ -1188,11 +1211,14 @@ Immediate from Theorem~\ref{thm:terminal} with $F=\Nrd$ followed by division
 by the central constant $m^2$.
 \end{proof}
 
-\subsection{Connection to the algebrization barrier}
+\subsection{Illustrative connection to barrier literature}
 
 Theorem~\ref{thm:terminal} illustrates, in miniature and with complete rigor,
-a phenomenon structurally analogous to the algebrization barrier~\cite{AW}.
-The construction was
+a collapse mechanism we compare---only by structural analogy, without
+claiming a formal reduction---to the algebrization barrier of Aaronson and
+Wigderson~\cite{AW}. We do not establish any new theorem about
+algebrization, nor show that our readout falls under the hypotheses of
+that framework. The construction was
 engineered to be non-commutative so as to resist linear gauge symmetry; the
 tensor phase even succeeds in keeping the object non-commutative
 (Proposition~\ref{prop:nogauge}, Observation~\ref{obs:n4}). But the only
@@ -1200,21 +1226,25 @@ $\QQ$-valued, basis-independent readout available through the reduced norm
 projects onto the centre, and the centre is a commutative field of low
 degree ($\Nrd$ is a quadratic form). A separating obstruction, if it lives
 downstream of such a readout, is therefore computable from a low-degree
-commutative extension---precisely the regime against which algebrization is
-provably effective, and, via Razborov--Rudich~\cite{RR}, the regime in which
-a smoothly varying separating functional would constitute a natural
-property. The failure mode is not that the object is too simple; it is that the
+commutative extension---reminiscent, at the level of metaphor, of the
+low-degree commutative summaries against which the algebrization program
+is designed to guard~\cite{AW}, and, via Razborov--Rudich~\cite{RR}, of the
+regime in which a smoothly varying separating functional would constitute a
+natural property. The failure mode is not that the object is too simple; it is that the
 \emph{measurement} is abelian.
 
 \newpage
 
 %=======================================================================
-\section{Exact Size-Matched Experiments}\label{sec:experiments}
+\section{Exact Verification on Size-Matched Instances}\label{sec:experiments}
 %=======================================================================
 
 \subsection{Methodology}
 
-The Quaternionic Invariant Laboratory (QIL, Section~\ref{sec:software})
+The experiments below \emph{corroborate} the structural impossibility
+predictions of Sections~\ref{sec:collapse} and~\ref{sec:terminal}; they are
+not a heuristic search for separation. The Quaternionic Invariant Laboratory
+(QIL, Section~\ref{sec:software})
 performs every computation over $\ZZ$ and $\QQ$ with arbitrary-precision
 integers and fractions; no floating-point primitive appears anywhere, so all
 reported quantities are exact and reproducible. Random $3$-CNF instances are
@@ -1320,11 +1350,32 @@ quantity again fails to track satisfiability. The empirical interleaving is
 the visible shadow of the terminal abelianization.
 
 %=======================================================================
-\section{Discussion: A Taxonomy of Algebraic Degeneration}
+\section{Implications for Non-Commutative Obstruction Search}
 \label{sec:discussion}
 %=======================================================================
 
-\subsection{Two poles of collapse}
+\subsection{Scope and readership}\label{sec:scope}
+
+For the algebraic complexity reader, the take-away is a \emph{delimitation
+theorem}, not a hardness result. We rule out a concrete class of local,
+low-degree, quaternionic invariants---those obtained from bipartite
+order-$2$ Dieudonn\'e data or from order-$3$ tensors read out through
+$g\circ\Nrd$ after linear contraction and word-traces---as candidates for
+$\QQ$-valued separation of exactly labelled $3$-SAT instances. The
+$3$-CNF testbed supplies exact labels and finite verification; the
+mathematical content is the two collapse mechanisms and the necessary
+conditions they impose on successors. QIL (Section~\ref{sec:software})
+certifies every rational constant; it does not alter the logical status of
+the theorems.
+
+The extrinsic collapse of Theorem~\ref{thm:terminal} is offered only as a
+structural analogy with the algebrization barrier~\cite{AW}, without
+claiming a formal reduction. Constraints for GCT-style obstruction
+searches~\cite{GCT1,GCT2}---avoid two-colourable bilinear formats and
+terminally abelianized readouts---follow from our proofs; they do not, by
+themselves, advance the GCT program toward $\mathrm{P}$ versus $\mathrm{NP}$.
+
+\subsection{Two poles of collapse}\label{sec:poles}
 
 The program isolates two mechanistically distinct ways in which a
 non-commutative invariant of $3$-SAT degenerates, and they are best
@@ -1408,13 +1459,19 @@ by the measurement---the ``wall''.}
 \label{fig:pipeline}
 \end{figure}
 
-\subsection{Mathematical requirements for escape}
+\subsection{Mathematical requirements for escape}\label{sec:escape}
 
 Theorem~\ref{thm:terminal} identifies precisely what must change. Any
 extraction of the form $g\circ\Nrd$ is barred; escape requires a $\QQ$- or
 $\bar\QQ$-valued functional of $M$ (or of $\Tphi$ directly) that does
 \emph{not} factor through the conjugation quotient
-$\HH(\QQ)//\HH(\QQ)^{\times}\cong\QQ^2$. Two structural directions are
+$\HH(\QQ)//\HH(\QQ)^{\times}\cong\QQ^2$. This is orthogonal to, but
+instructive when read alongside, the non-commutative rank and rational
+identity literature~\cite{GGOV,IvanyosQiaoSubrahmanyam}: those frameworks
+seek $\QQ$-certificates from non-commutative data by different means, whereas
+our negative result isolates a specific Dieudonn\'e- and semi-invariant-style
+pipeline~\cite{DerksenMakam} whose terminal reduced-norm readout is
+intrinsically too coarse. Two structural directions are
 consistent with this:
 
 \begin{enumerate}
@@ -1435,122 +1492,73 @@ differing in satisfiability; only an invariant sensitive to cross-clause
 sign interference can distinguish them.
 \end{enumerate}
 
-\subsection{Status of the program}
-
-We reiterate that no separation of $\mathrm{P}$ from $\mathrm{NP}$ is
-claimed or approached. The contribution is a pair of exact structural
-theorems delimiting \emph{why} an entire, natural family of local,
-low-degree, quaternionic invariants cannot separate the $3$-SAT variety
-from its complement, together with an exact, reproducible laboratory (QIL,
-Section~\ref{sec:software}) that
-functions as a falsification harness: it does not merely fail to find an
-obstruction; it proves, over exact arithmetic, the structural reason a whole
-class of candidates must fail. The boundary conditions established
-here---avoid two-colourable bilinear formats (else intrinsic gauge
-collapse), and avoid terminally-abelianized readouts (else extrinsic
-abelianization)---delimit constraints that any successor invariant in this
-vein must satisfy, in the spirit of GCT-style obstruction
-searches~\cite{GCT1,GCT2}.
-
-\newpage
-
 %=======================================================================
-\section{Research Software and Reproducibility}\label{sec:software}
+\section{The Quaternionic Invariant Laboratory (QIL)}\label{sec:software}
 %=======================================================================
 
-All results in this paper are accompanied by the \emph{Quaternionic
-Invariant Laboratory} (QIL), an open-source, exact-arithmetic research
-framework. QIL is not an appendix to the paper but the official laboratory of
-the research program: it is the environment in which every quaternionic
-computation, tensor construction, invariant evaluation and reproducible
-experiment reported here was carried out. The complete workspace---Rust
-library, experiment drivers, manuscript sources, and documentation---is
-publicly available at
+QIL is the open-source exact-arithmetic environment in which every
+quaternionic computation, invariant evaluation, and reproducible check in
+this paper was carried out. Its role is \emph{verification}: the theorems are
+proved analytically, and QIL certifies that each cited rational constant,
+table entry, and pinned observation matches the formal definitions. The
+complete workspace---Rust library, experiment drivers, and
+documentation---is publicly available at
 \href{\QILRepositoryURL}{\nolinkurl{\QILRepositoryURL}}.
 
-\subsection{What QIL is, and why it was built}
+\subsection{Architecture and correspondence to the paper}
 
-QIL is a Rust library and experiment suite that implements, exactly, the
-mathematical objects of this manuscript. It was developed to make the
-program's claims \emph{machine-checkable rather than merely asserted}: because
-$3$-SAT satisfiability is combinatorial and finite, and because a spurious
-low-complexity separating functional would be an artifact worth guarding
-against, every invariant is computed over the exact rationals and every
-published constant is re-derived by an automated check. The library is
-organised so that each module corresponds to a concept of the paper: the
-Hamiltonian division ring $\HH(\QQ)$; the two models (incidence matrix and
-order-3 hypergraph tensor); the invariants (Dieudonn\'e determinant,
-word-trace spectra, tensor invariants); the two collapse mechanisms
-(intrinsic gauge collapse and extrinsic terminal abelianization); the exact
-generators; and reproducible input/output.
+QIL is a Rust library implementing, exactly, the mathematical objects of
+Sections~\ref{sec:incidence}--\ref{sec:terminal}. Each module mirrors a paper
+concept: the Hamiltonian division ring $\HH(\QQ)$; the incidence matrix and
+order-$3$ hypergraph tensor; Dieudonn\'e and word-trace invariants; and the
+\texttt{collapse} module encoding both impossibility mechanisms so successor
+candidates can be tested against them before publication.
 
-\subsection{How QIL guarantees reproducibility}
+\subsection{Reproducibility guarantees}
 
 Three design choices underwrite bit-for-bit reproducibility. First, there is
 \emph{no floating-point arithmetic anywhere}: all coefficients are
-arbitrary-precision integers and rationals, so a reduced norm such as
-$\Nrd = 2^{16}$ or a tensor entry such as $660 + 660\bi + 660\bj$ is an exact
-value, not an approximation. Second, all randomness is a deterministic
-integer \texttt{SplitMix64} stream seeded by fixed constants, so a given
-experiment reproduces identically on any platform. Third, ground-truth
-satisfiability labels come from an exhaustive exact solver over all $2^n$
-assignments, not a heuristic. The two data tables of
-Section~\ref{sec:experiments} are emitted verbatim by
+arbitrary-precision integers and rationals. Second, randomness is a
+deterministic \texttt{SplitMix64} stream with fixed seeds. Third,
+satisfiability labels come from exhaustive exact search over all $2^n$
+assignments. Section~\ref{sec:experiments} tables are emitted verbatim by
 \[
   \texttt{cargo run -{}-example reproduce\_table\_1},\qquad
   \texttt{cargo run -{}-example reproduce\_table\_2},
 \]
-the contrast data behind the figures by
-\texttt{cargo run -{}-example reproduce\_figures}, and the pinned constants
-(e.g.\ the minimal-pair reduced norms $2^{16}$ and $2^{8}\cdot 13^{2}$) are
-re-verified by \texttt{cargo run -{}-example exact\_validation}.
+with figures and pinned constants re-verified by
+\texttt{reproduce\_figures} and \texttt{exact\_validation}.
 
-\subsection{Extending QIL}
+\subsection{Extensibility}
 
-QIL is designed as an extensible platform rather than a single-paper script.
-New invariants are added by implementing a method on the relevant model in the
-\texttt{invariants} module; new algebraic carriers (further non-commutative
-algebras, higher-order tensors) slot into \texttt{algebra} and \texttt{models}
-without disturbing existing code; and new experiments are added as
-self-contained example drivers. The two collapse mechanisms of this paper are
-implemented in the \texttt{collapse} module precisely so that a candidate
-successor invariant can be tested against both barriers---avoidance of a
-two-colourable bilinear format, and avoidance of a terminally-abelianized
-readout---before it is trusted. QIL will be maintained as the reproducible
-research platform for the future publications of this program.
+QIL remains the maintained platform for testing successor invariants against
+both collapse barriers---two-colourable bilinear formats and terminally
+abelianized readouts---before they enter the analytical pipeline of future
+work.
+
+\newpage
 
 %=======================================================================
-\section{Conclusion and Roadmap}\label{sec:conclusion}
+\section{Conclusion}\label{sec:conclusion}
 %=======================================================================
 
-We have unified two phases of a single research program into one narrative
-governed by a single question and answered it with two theorems. The
-quaternionic incidence matrix collapses because its bipartite bilinearity
-\emph{is} a diagonal gauge involution (Theorem~\ref{thm:collapse}), a defect
-we proved intrinsic to the entire class of two-colourable order-$2$ formats
-(Theorem~\ref{thm:intrinsic}) and hence unavoidable without raising the
-carrier's arity to match the clause width (Corollary~\ref{cor:necessity}).
-The resulting symmetric order-$3$ tensor is free of that gauge
-(Proposition~\ref{prop:nogauge}) and does retain genuine non-commutative
-structure once degree heterogeneity defeats the Fourier hypercube
-annihilation (Theorem~\ref{thm:annih}, Proposition~\ref{prop:survive}), yet
-its natural scalar invariants collapse a second time---not as a symmetry of
-the object but as an abelianization of the readout
-(Theorem~\ref{thm:terminal}), a phenomenon we illustrated on exact
-size-matched data (Observation~\ref{obs:interleave}) and that illustrates,
-in miniature, a collapse mechanism structurally analogous to the
-algebrization barrier~\cite{AW}.
+We have proved exact boundary theorems for a natural family of local
+quaternionic invariants. Bipartite order-$2$ encodings suffer intrinsic gauge
+collapse (Theorems~\ref{thm:collapse}, \ref{thm:intrinsic}); the minimal
+arity lift to order-$3$ tensors removes that symmetry
+(Proposition~\ref{prop:nogauge}) yet terminally abelianized scalar readouts
+collapse again (Theorem~\ref{thm:terminal}, Remark~\ref{rem:terminal}).
+Together these yield a taxonomy---failure in the object versus failure in
+the measurement---and necessary conditions for any successor
+(Section~\ref{sec:escape}). Exact data in Section~\ref{sec:experiments}
+corroborates the predictions; QIL certifies every constant.
 
-The roadmap follows from Theorem~\ref{thm:terminal}: any next step must both
-(i) keep the object away from two-colourable bilinear formats and (ii) read
-it out through a functional that does not factor through the reduced norm,
-i.e.\ a non-abelian boundary evaluation or a non-local contraction sensitive
-to cross-clause sign interference. Whether such an invariant of
-$\Tphi$ resists both collapses and supplies an explicit obstruction is, in
-our view, the sharply posed continuation of this line of inquiry; the two
-negative theorems established here delimit exactly why the linear and the
-locally-contracted stages were insufficient, and exactly what a successful
-successor must not do.
+This is a delimitation result for algebraic complexity and obstruction
+search, not a step toward resolving $\mathrm{P}$ versus $\mathrm{NP}$. The
+sharply posed continuation is whether a readout that avoids both collapses
+---non-abelian boundary evaluation or non-local contraction sensitive to
+cross-clause sign interference---can produce an explicit obstruction for
+$\Tphi$ or a related non-commutative carrier.
 
 \subsection*{Reproducibility}
 

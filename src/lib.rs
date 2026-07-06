@@ -1,17 +1,17 @@
 //! # QIL — Quaternionic Invariant Laboratory
 //!
-//! QIL is an open-source, exact-arithmetic research framework for the study of
-//! **non-commutative quaternionic invariants of 3-SAT** and the structural
-//! collapse mechanisms that arise in the Geometric Complexity Theory (GCT)
-//! program. It is the official laboratory accompanying the manuscript
-//! *"Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT"*
-//! (`docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`).
+//! QIL is an open-source, exact-arithmetic research framework for studying
+//! **local, low-degree non-commutative invariants** over the rational Hamiltonian
+//! quaternions and the structural collapse mechanisms that delimit them in
+//! algebraic complexity. It is the verification companion to the manuscript
+//! *"Impossibility of Local Quaternionic Invariants for 3-SAT Separation:
+//! Intrinsic Gauge Collapse and Terminal Abelianization"*
+//! (`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`).
 //!
-//! The framework does not claim to separate `P` from `NP`. It answers a sharper,
-//! verifiable question: *why do local, low-degree non-commutative invariants
-//! built on quaternionic encodings of 3-SAT structurally fail, even when the
-//! obvious gauge symmetries are broken?* QIL implements exactly the two central
-//! results:
+//! The framework does not claim to separate `P` from `NP`. It machine-checks a
+//! sharper, verifiable question: *why does a natural quaternionic pipeline
+//! structurally fail as a separating invariant on exactly labelled 3-SAT
+//! instances?* QIL implements exactly the two central boundary theorems:
 //!
 //! 1. **Intrinsic Bipartite Gauge Collapse** — the two-colourability of the
 //!    incidence matrix induces a diagonal gauge involution that forces the

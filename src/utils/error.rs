@@ -11,7 +11,7 @@
 //!
 //! This module is infrastructural; it does not implement a mathematical object
 //! of the manuscript, but it underpins the reproducible I/O described in the
-//! "Research Software and Reproducibility" section.
+//! "The Quaternionic Invariant Laboratory (QIL)" section.
 
 use std::fmt;
 

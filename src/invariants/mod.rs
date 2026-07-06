@@ -9,8 +9,9 @@
 //! * [`tensor_invariants`] — the Frobenius reduced-norm and the normalised
 //!   word-trace invariant of the order-3 tensor.
 //!
-//! These are the candidate GCT obstructions the manuscript evaluates; the
-//! collapse mechanisms that neutralise them live in [`crate::collapse`].
+//! These are the candidate local non-commutative invariants the manuscript
+//! evaluates; the collapse mechanisms that neutralise them live in
+//! [`crate::collapse`].
 
 pub mod dieudonne;
 pub mod quaternionic_trace;

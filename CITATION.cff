@@ -2,10 +2,11 @@ cff-version: 1.2.0
 message: "If you use QIL in academic work, please cite both the software and the accompanying manuscript."
 title: "QIL — Quaternionic Invariant Laboratory"
 abstract: >-
-  An open-source, exact-arithmetic research framework in Rust for the study of
-  non-commutative quaternionic invariants of 3-SAT and the structural collapse
-  mechanisms of Geometric Complexity Theory: the Intrinsic Bipartite Gauge
-  Collapse and the Extrinsic Terminal Abelianization.
+  An open-source, exact-arithmetic research framework in Rust for studying
+  local, low-degree non-commutative invariants over the rational Hamiltonian
+  quaternions. QIL machine-checks the boundary theorems of the accompanying
+  manuscript: intrinsic bipartite gauge collapse and extrinsic terminal
+  abelianization on exactly labelled 3-SAT instances.
 type: software
 authors:
   - family-names: "Paniagua-Ramirez"
@@ -18,14 +19,14 @@ license: "MIT OR Apache-2.0"
 keywords:
   - quaternion
   - non-commutative algebra
-  - geometric complexity theory
+  - algebraic complexity
   - exact arithmetic
   - 3-SAT
   - hypergraph
 repository-code: "https://github.com/mauramyrez/QIL-Research-Framework"
 preferred-citation:
   type: article
-  title: "Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT: The Bipartite Gauge Involution and Terminal Abelianization in Quaternionic Incidence Matrices and Order-3 Adjacency Tensors"
+  title: "Impossibility of Local Quaternionic Invariants for 3-SAT Separation: Intrinsic Gauge Collapse and Terminal Abelianization"
   authors:
     - family-names: "Paniagua-Ramirez"
       given-names: "M. M."

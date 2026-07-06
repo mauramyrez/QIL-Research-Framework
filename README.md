@@ -2,31 +2,33 @@
 
 [![Repository](https://img.shields.io/badge/GitHub-QIL--Research--Framework-blue)](https://github.com/mauramyrez/QIL-Research-Framework)
 
-QIL is an open-source, **exact-arithmetic** research framework in Rust for the
-study of non-commutative quaternionic invariants of 3-SAT and the structural
-collapse mechanisms that arise in the Geometric Complexity Theory (GCT)
-program.
+QIL is an open-source, **exact-arithmetic** research framework in Rust for
+studying **local, low-degree non-commutative invariants** over the rational
+Hamiltonian quaternions and the structural collapse mechanisms that delimit
+them in algebraic complexity and obstruction search.
 
-> QIL does **not** claim to separate P from NP. It answers a sharper,
-> machine-checkable question: *why do local, low-degree non-commutative
-> invariants built on quaternionic encodings of 3-SAT structurally fail, even
-> when the obvious gauge symmetries are broken?*
+> QIL does **not** claim to separate P from NP. It machine-checks a sharper
+> question: *why does a natural quaternionic pipeline---Dieudonné data,
+> order-3 tensors, reduced-norm readouts---provably fail as a separating
+> invariant on exactly labelled 3-SAT instances?*
 
 ## Scientific Manuscript
 
-The Springer Nature / *Algorithmica* submission lives in
-[`docs/submission_algorithmica_springer/`](docs/submission_algorithmica_springer/).
+The Springer *Computational Complexity* submission lives in
+[`docs/submission_computational_complexity_springer/`](docs/submission_computational_complexity_springer/).
 
 | Item | Path |
 |------|------|
-| Main source | [`Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`](docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex) |
-| Bibliography | [`sn-bibliography.bib`](docs/submission_algorithmica_springer/sn-bibliography.bib) |
-| Document class | [`sn-jnl.cls`](docs/submission_algorithmica_springer/sn-jnl.cls) |
+| Main source | [`Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`](docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex) |
+| Bibliography | [`sn-bibliography.bib`](docs/submission_computational_complexity_springer/sn-bibliography.bib) |
+| Document class | [`sn-jnl.cls`](docs/submission_computational_complexity_springer/sn-jnl.cls) |
+
+**Working title:** *Impossibility of Local Quaternionic Invariants for 3-SAT Separation: Intrinsic Gauge Collapse and Terminal Abelianization*.
 
 **Compile the PDF** (from the repository root):
 
 ```bash
-cd docs/submission_algorithmica_springer
+cd docs/submission_computational_complexity_springer
 pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
 bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
 pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
@@ -39,10 +41,10 @@ run `pdflatex` twice; citations may be incomplete until BibTeX is run once.
 ## Reproducibility with QIL
 
 This repository root is the **Quaternionic Invariant Laboratory (QIL)**. It is
-the official computational companion to the manuscript: every exact rational in
-Tables 1–2, the figure contrast data, and the pinned constants cited in
-Section “Exact Size-Matched Experiments” are emitted and machine-checked by the
-Rust framework here—not by hand.
+the exact verification companion to the manuscript: every rational in Tables
+1–2, the figure contrast data, and the pinned constants cited in Section
+“Exact Verification on Size-Matched Instances” are emitted and machine-checked
+here—not by hand.
 
 QIL verifies:
 
@@ -71,17 +73,21 @@ and [docs/theory/](docs/theory) for concept-by-concept notes.
 
 ## The two central results
 
-QIL implements exactly the two collapse mechanisms of the research program:
+QIL implements exactly the two collapse mechanisms proved in the manuscript:
 
-1. **Intrinsic Bipartite Gauge Collapse.** The two-colourability of the
-   clause/variable incidence matrix induces a diagonal gauge involution
-   `sigma_k(A) = G A G^{-1}` that forces the Dieudonne determinant into the
-   commutative subfield `Q[k]`, annihilating the literal commutator torsion
-   `2bc`. (A symmetry of the *object*.)
-2. **Extrinsic Terminal Abelianization.** The reduced-norm readout of the tensor
+1. **Intrinsic gauge collapse.** The two-colourability of the clause/variable
+   incidence matrix induces a diagonal gauge involution `sigma_k(A) = G A G^{-1}`
+   that forces the Dieudonné determinant into the commutative subfield `Q[k]`,
+   annihilating the literal commutator torsion `2bc`. (A symmetry of the
+   *object*.)
+2. **Extrinsic terminal abelianization.** The reduced-norm readout of the tensor
    word-trace `Nrd(Tr(M^p))` factors through the conjugation quotient,
    collapsing the non-commutative spectrum onto the central pair `(Trd, Nrd)`.
    (A property of the *measurement*.)
+
+Together they form a **boundary result** for a natural family of local
+quaternionic invariants; Section “Implications for Non-Commutative Obstruction
+Search” states the necessary conditions for any successor.
 
 ## Why exact arithmetic
 
@@ -98,7 +104,7 @@ Each module corresponds to a concept of the paper (see
 - `algebra/` — the exact Hamiltonian division ring `H(Q)`.
 - `models/` — the incidence matrix (order-2) and the hypergraph tensor
   (order-3), plus the transverse contraction operator.
-- `invariants/` — Dieudonne determinant, word-trace spectra, tensor invariants.
+- `invariants/` — Dieudonné determinant, word-trace spectra, tensor invariants.
 - `collapse/` — the two collapse mechanisms and prime-support diagnostics.
 - `generators/` — reproducible CNF generation and exact labelling.
 - `io/` — DIMACS parsing and exact JSON/CSV export.

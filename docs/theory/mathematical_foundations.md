@@ -50,4 +50,5 @@ Every coefficient is an arbitrary-precision rational (`num-rational` over
 ## Paper reference
 
 Section "The Quaternionic Incidence Model" (rational quaternion division ring)
-of `docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+of `docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`
+(Springer *Computational Complexity* submission).
