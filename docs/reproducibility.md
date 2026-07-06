@@ -68,13 +68,13 @@ cargo bench            # Criterion (performance only; optional)
 
 ```
 cd docs/submission_algorithmica_springer
-pdflatex sn-article.tex
-bibtex sn-article
-pdflatex sn-article.tex
-pdflatex sn-article.tex
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
 ```
 
-(Or `latexmk -pdf sn-article.tex` if Perl is available.)
+(Or `latexmk -pdf Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex` if Perl is available.)
 
 ## Determinism notes
 

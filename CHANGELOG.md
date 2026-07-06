@@ -14,7 +14,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `generators/`, `io/`, `utils/`.
 - Unified the two research phases (linear incidence matrix and non-linear
   hypergraph tensor) into a single manuscript at
-  `docs/submission_algorithmica_springer/sn-article.tex`.
+  `docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
 
 ### Added
 - `collapse/extrinsic.rs`: the `TerminalProjection (Trd, Nrd)` formalising the

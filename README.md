@@ -19,7 +19,7 @@ The Springer Nature / *Algorithmica* submission lives in
 
 | Item | Path |
 |------|------|
-| Main source | [`sn-article.tex`](docs/submission_algorithmica_springer/sn-article.tex) |
+| Main source | [`Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`](docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex) |
 | Bibliography | [`sn-bibliography.bib`](docs/submission_algorithmica_springer/sn-bibliography.bib) |
 | Document class | [`sn-jnl.cls`](docs/submission_algorithmica_springer/sn-jnl.cls) |
 
@@ -27,10 +27,10 @@ The Springer Nature / *Algorithmica* submission lives in
 
 ```bash
 cd docs/submission_algorithmica_springer
-pdflatex sn-article.tex
-bibtex sn-article
-pdflatex sn-article.tex
-pdflatex sn-article.tex
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
 ```
 
 On Windows (PowerShell), the same sequence applies. If `bibtex` is unavailable,

@@ -5,7 +5,7 @@
 //! collapse mechanisms that arise in the Geometric Complexity Theory (GCT)
 //! program. It is the official laboratory accompanying the manuscript
 //! *"Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT"*
-//! (`docs/submission_algorithmica_springer/sn-article.tex`).
+//! (`docs/submission_algorithmica_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`).
 //!
 //! The framework does not claim to separate `P` from `NP`. It answers a sharper,
 //! verifiable question: *why do local, low-degree non-commutative invariants
