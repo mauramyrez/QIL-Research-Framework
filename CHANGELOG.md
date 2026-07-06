@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Changed
+- Renamed manuscript source/PDF to `Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.*` (main title; git-safe path on Windows).
+- Added `.githooks/prepare-commit-msg` and `scripts/commit-author-only.ps1` to suppress Cursor co-author trailers.
 - Rebranded and restructured the project into the **Quaternionic Invariant
   Laboratory (QIL)**. The Cargo package was renamed from `gct-lab` to `qil`.
 - Reorganised the source tree so that each module corresponds to a concept of
@@ -14,7 +16,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `generators/`, `io/`, `utils/`.
 - Unified the two research phases (linear incidence matrix and non-linear
   hypergraph tensor) into a single manuscript at
-  `docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+  `docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`.
 - Reframed the manuscript and workspace for Springer *Computational Complexity*:
   boundary-result framing, renamed submission folder, updated title/abstract,
   section names (`Exact Verification…`, `Implications for Obstruction Search`,

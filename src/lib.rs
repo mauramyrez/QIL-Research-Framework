@@ -6,7 +6,7 @@
 //! algebraic complexity. It is the verification companion to the manuscript
 //! *"Impossibility of Local Quaternionic Invariants for 3-SAT Separation:
 //! Intrinsic Gauge Collapse and Terminal Abelianization"*
-//! (`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`).
+//! (`docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`).
 //!
 //! The framework does not claim to separate `P` from `NP`. It machine-checks a
 //! sharper, verifiable question: *why does a natural quaternionic pipeline

@@ -52,4 +52,4 @@ cargo run --example reproduce_figures
 
 Sections "The Quaternionic Order-3 Tensor Construction" and "Fourier Hypercube
 Annihilation and Degree Heterogeneity" of
-`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+`docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`.

@@ -70,13 +70,13 @@ cargo bench            # Criterion (performance only; optional)
 
 ```
 cd docs/submission_computational_complexity_springer
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
-bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
+bibtex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
 ```
 
-(Or `latexmk -pdf Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex` if Perl is available.)
+(Or `latexmk -pdf Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex` if Perl is available.)
 
 ## Determinism notes
 

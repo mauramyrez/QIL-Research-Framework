@@ -62,4 +62,4 @@ cargo run --example reproduce_table_2
 
 Sections "Non-Commutative Contraction and the Spectrum" and "The Terminal
 Abelianization Theorem" of
-`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+`docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`.

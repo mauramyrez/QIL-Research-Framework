@@ -19,20 +19,21 @@ The Springer *Computational Complexity* submission lives in
 
 | Item | Path |
 |------|------|
-| Main source | [`Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`](docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex) |
+| Main source | [`Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`](docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex) |
+| PDF | `Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.pdf` (build locally; subtitle on title page) |
 | Bibliography | [`sn-bibliography.bib`](docs/submission_computational_complexity_springer/sn-bibliography.bib) |
 | Document class | [`sn-jnl.cls`](docs/submission_computational_complexity_springer/sn-jnl.cls) |
 
-**Working title:** *Impossibility of Local Quaternionic Invariants for 3-SAT Separation: Intrinsic Gauge Collapse and Terminal Abelianization*.
+**Title:** *Impossibility of Local Quaternionic Invariants for 3-SAT Separation: Intrinsic Gauge Collapse and Terminal Abelianization* (filename uses the main title; subtitle appears in the PDF).
 
 **Compile the PDF** (from the repository root):
 
 ```bash
 cd docs/submission_computational_complexity_springer
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
-bibtex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
-pdflatex Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
+bibtex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
+pdflatex Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex
 ```
 
 On Windows (PowerShell), the same sequence applies. If `bibtex` is unavailable,

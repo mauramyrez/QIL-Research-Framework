@@ -28,6 +28,16 @@ cargo test
 All three must pass before a change is proposed. Add unit tests next to the code
 and, for manuscript-level claims, an integration test under `tests/`.
 
+## Git commits without Cursor co-authorship
+
+Cursor may append `Co-authored-by: Cursor <cursoragent@cursor.com>` to commit
+messages, which GitHub displays as a second author. To avoid this:
+
+1. **One-time hook setup** (recommended):  
+   `git config core.hooksPath .githooks`
+2. **Or** use:  
+   `.\scripts\commit-author-only.ps1 -Subject "..." -Body "..."`
+
 ## Adding a new invariant
 
 1. Implement it as a method on the relevant model in `src/invariants/`.

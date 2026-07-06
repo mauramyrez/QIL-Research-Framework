@@ -43,4 +43,4 @@ literal commutator torsion for the minimal `n = 3` control pair.
 
 Sections "The Quaternionic Incidence Model" and "Global Torsion and the
 Commutative Collapse Theorem" of
-`docs/submission_computational_complexity_springer/Two_Collapse_Mechanisms_for_Non_Commutative_Invariants_of_3_SAT.tex`.
+`docs/submission_computational_complexity_springer/Impossibility_of_Local_Quaternionic_Invariants_for_3_SAT_Separation.tex`.
