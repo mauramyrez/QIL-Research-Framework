@@ -1,6 +1,6 @@
 # QIL — Quaternionic Invariant Laboratory
 
-[![Repository](https://img.shields.io/badge/GitHub-QIL--Research--Framework-blue)](https://github.com/mauramyrez11/QIL-Research-Framework)
+[![Repository](https://img.shields.io/badge/GitHub-QIL--Research--Framework-blue)](https://github.com/mauramyrez/QIL-Research-Framework)
 
 QIL is an open-source, **exact-arithmetic** research framework in Rust for the
 study of non-commutative quaternionic invariants of 3-SAT and the structural

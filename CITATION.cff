@@ -22,7 +22,7 @@ keywords:
   - exact arithmetic
   - 3-SAT
   - hypergraph
-repository-code: "https://github.com/mauramyrez11/QIL-Research-Framework"
+repository-code: "https://github.com/mauramyrez/QIL-Research-Framework"
 preferred-citation:
   type: article
   title: "Two Collapse Mechanisms for Non-Commutative Invariants of 3-SAT: The Bipartite Gauge Involution and Terminal Abelianization in Quaternionic Incidence Matrices and Order-3 Adjacency Tensors"
