@@ -31,3 +31,6 @@ desktop.ini
 
 # Criterion benchmark output
 /target/criterion/
+
+# Local-only helper scripts (not published to GitHub)
+scripts/
