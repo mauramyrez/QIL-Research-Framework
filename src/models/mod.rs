@@ -18,7 +18,7 @@ pub mod contractions;
 pub mod hypergraph_tensor;
 pub mod incidence_matrix;
 
-pub use cnf::{Clause, Literal};
+pub use cnf::{Clause, Cnf, Literal};
 pub use contractions::TensorMatrixProjection;
 pub use hypergraph_tensor::{CNFClause, HypergraphTensor3};
 pub use incidence_matrix::AlgebraicAdjacencyMatrix;

@@ -66,4 +66,45 @@ impl Clause {
     pub fn width(&self) -> usize {
         self.literals.len()
     }
+
+    /// Support of the clause as a sorted list of distinct variable indices.
+    #[inline]
+    pub fn support(&self) -> Vec<usize> {
+        let mut vars: Vec<usize> = self.literals.iter().map(|lit| lit.variable_idx).collect();
+        vars.sort_unstable();
+        vars.dedup();
+        vars
+    }
+
+    /// Sign of the literal on `variable`, or `None` if the variable is absent.
+    #[inline]
+    pub fn sign_on(&self, variable: usize) -> Option<i64> {
+        self.literals
+            .iter()
+            .find(|lit| lit.variable_idx == variable)
+            .map(Literal::sign)
+    }
+}
+
+/// A CNF formula: a finite set of clauses over `n` Boolean variables.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Cnf {
+    /// Number of Boolean variables (indices in `0..n_vars`).
+    pub n_vars: usize,
+    /// Clauses of the formula (order is part of the concrete presentation).
+    pub clauses: Vec<Clause>,
+}
+
+impl Cnf {
+    /// Construct a CNF from a variable count and clause list.
+    #[inline]
+    pub fn new(n_vars: usize, clauses: Vec<Clause>) -> Self {
+        Self { n_vars, clauses }
+    }
+
+    /// Number of clauses `m`.
+    #[inline]
+    pub fn num_clauses(&self) -> usize {
+        self.clauses.len()
+    }
 }
