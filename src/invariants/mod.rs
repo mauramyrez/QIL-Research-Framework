@@ -23,6 +23,6 @@ pub mod tensor_invariants;
 
 pub use clause_overlap::{
     eval_b_chi, eval_p6_from_injective_and_parity, eval_p6_ie_closed_form, eval_p6_injective,
-    eval_parity_residue_linear, LAYER_WORD_P6,
+    eval_parity_residue_linear, overlap_profile, OverlapProfile, LAYER_WORD_P6,
 };
 pub use tensor_invariants::WORD_TRACE_POWER;

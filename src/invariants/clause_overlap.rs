@@ -193,6 +193,39 @@ pub fn eval_parity_residue_linear(formula: &Cnf) -> i64 {
     parity_sums(formula).into_iter().map(|(_, s_t, _)| s_t).sum()
 }
 
+/// Collision / multiplicity profile of clause supports.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct OverlapProfile {
+    /// Number of distinct occupied triples `|{ t : m_t >= 1 }|`.
+    pub occupied_triples: usize,
+    /// Number of colliding triples `|{ t : m_t > 1 }|`.
+    pub colliding_triples: usize,
+    /// Number of triples with multiplicity at least 3 (needed for an injective 6-cycle).
+    pub triples_m_ge_3: usize,
+    /// Sum of multiplicities `sum_t m_t` (equals `m` for pure width-3 formulas).
+    pub sum_multiplicities: usize,
+    /// Excess collisions `sum_t max(m_t - 1, 0)`.
+    pub collision_excess: usize,
+}
+
+/// Support-multiplicity profile used by the asymptotic dilution analysis.
+pub fn overlap_profile(formula: &Cnf) -> OverlapProfile {
+    let mut profile = OverlapProfile::default();
+    for (_triple, clauses) in clauses_by_triple(formula) {
+        let m_t = clauses.len();
+        profile.occupied_triples += 1;
+        profile.sum_multiplicities += m_t;
+        if m_t > 1 {
+            profile.colliding_triples += 1;
+            profile.collision_excess += m_t - 1;
+        }
+        if m_t >= 3 {
+            profile.triples_m_ge_3 += 1;
+        }
+    }
+    profile
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
