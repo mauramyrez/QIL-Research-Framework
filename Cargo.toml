@@ -42,6 +42,14 @@ path = "experiments/exact_validation.rs"
 name = "stress_tests"
 path = "experiments/stress_tests.rs"
 
+[[example]]
+name = "verify_overlap_conjecture"
+path = "examples/verify_overlap_conjecture.rs"
+
+[[example]]
+name = "asymptotic_analysis"
+path = "examples/asymptotic_analysis.rs"
+
 # ---------------------------------------------------------------------------
 # Criterion benches (stable harness). These measure performance only and never
 # influence the exact-arithmetic results reported in the manuscript.
