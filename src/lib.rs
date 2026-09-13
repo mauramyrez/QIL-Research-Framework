@@ -74,7 +74,8 @@ pub mod utils;
 pub use algebra::QuaternionicWeight;
 
 pub use models::{
-    AlgebraicAdjacencyMatrix, CNFClause, Clause, HypergraphTensor3, Literal, TensorMatrixProjection,
+    AlgebraicAdjacencyMatrix, CNFClause, Clause, Cnf, HypergraphTensor3, Literal,
+    TensorMatrixProjection,
 };
 
 pub use invariants::WORD_TRACE_POWER;
